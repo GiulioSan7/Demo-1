@@ -100,6 +100,8 @@ public class LibroController {
 				esito.setCasaEditrice(libro.getCasaEditrice());
 				esito.setBorrow(libro.getBorrow());
 				esito.setMessage(LibroConstants.MODIFICA_OK2);
+				int x=18;
+				x=x+1;
 
 				return esito;
 			}
