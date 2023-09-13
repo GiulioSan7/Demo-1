@@ -1,24 +1,30 @@
 package com.giulio.sannino.bean;
 
+
+
 public class Pizza {
 
 	private Integer codiceOrdine;
-	private boolean statoOrdine;
+	private Integer statoOrdine;
 	private String nomeCliente;
 	private String nomePizza;
+//	private Integer faseCasualeOrdine;
+    private Integer faseCasualeOrdine;
 
-	public Pizza(Integer codiceOrdine, boolean statoOrdine, String nomeCliente,String nomePizza) {
+	public Pizza(Integer codiceOrdine, Integer faseCasualeOrdine, String nomeCliente, String nomePizza) {
 		this.codiceOrdine = codiceOrdine;
-		this.statoOrdine = statoOrdine;
+//		this.statoOrdine = statoOrdine;
+		this.faseCasualeOrdine = faseCasualeOrdine;
 		this.nomeCliente = nomeCliente;
-		this.nomePizza= nomePizza;
+		this.nomePizza = nomePizza;
+
 	}
 
-	public boolean isStatoOrdine() {
+	public Integer isStatoOrdine() {
 		return statoOrdine;
 	}
 
-	public void setStatoOrdine(boolean statoOrdine) {
+	public void setStatoOrdine(Integer statoOrdine) {
 		this.statoOrdine = statoOrdine;
 	}
 
@@ -44,5 +50,26 @@ public class Pizza {
 
 	public void setNomePizza(String nomePizza) {
 		this.nomePizza = nomePizza;
+	}
+
+	public Integer getFaseCasualeOrdine() {
+		return faseCasualeOrdine;
+	}
+
+	public void setFaseCasualeOrdine(Integer faseCasualeOrdine) {
+		this.faseCasualeOrdine = faseCasualeOrdine;
+//		switch (faseCasualeOrdine) {
+//		case 1:
+//			System.out.println("1 = In attesa");
+//			break;
+//		case 2:
+//			System.out.println("2 = In preparazione.");
+//			break;
+//		case 3:
+//			System.out.println("3 = Ordine effettuato.");
+//			break;
+//		default:
+//			System.out.println("Valore casuale non gestito.");
+//		}
 	}
 }

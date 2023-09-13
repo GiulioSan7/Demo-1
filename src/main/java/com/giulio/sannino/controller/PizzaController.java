@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.giulio.sannino.bean.Libro;
 import com.giulio.sannino.bean.Pizza;
 import com.giulio.sannino.bean.StatoOrdine;
@@ -20,34 +21,44 @@ public class PizzaController {
 
 	@GetMapping("/pizza")
 	public List<Pizza> getPizza() {
-		pizze.add(new Pizza(1, false, "Angelo", "Margherita,Wrustel e patatine"));
-		pizze.add(new Pizza(2, false, "Pier", "Margherita con pepe e provola"));
-		pizze.add(new Pizza(3, false, "Frank", "Mimosa"));
-		pizze.add(new Pizza(4, false, "Anita", "Clazone Fritto"));
+		pizze.add(new Pizza(1, 1, "Angelo", "Margherita,Wrustel e patatine"));
+		pizze.add(new Pizza(2, 2, "Pier", "Margherita con pepe e provola"));
+		pizze.add(new Pizza(3, 1, "Frank", "Mimosa"));
+		pizze.add(new Pizza(4, 3, "Anita", "Clazone Fritto"));
 		return pizze;
 	}
 
 	@PutMapping("/stato/{codiceOrdine}")
-	// VERIFICA DELLO STATO DELL'ORDINE.
-	public StatoOrdine verificaStato(@PathVariable Integer codiceOrdine) {
+	// MODIFICA LO STATO DELL'ORDINE.
+	public StatoOrdine verificaStato(@PathVariable Integer codiceOrdine, @RequestBody Pizza FaseCasualeOrdine) {
 		StatoOrdine stato = new StatoOrdine();
 		for (Pizza pizza : pizze) {
+			pizza.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
+			stato.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
 			if (pizza.getCodiceOrdine() == codiceOrdine) {
-				if (pizza.isStatoOrdine() == false) {
-					pizza.isStatoOrdine();
-					stato.isStatoOrdine();
+				if (pizza.getFaseCasualeOrdine() == 1) {
+					pizza.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
+					stato.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
 					stato.setCodiceOrdine(pizza.getCodiceOrdine());
 					stato.setNomePizza(pizza.getNomePizza());
 					stato.setNomeCliente(pizza.getNomeCliente());
-					stato.setMessageOrdine(LibroConstants.MODIFICA_OK5);
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA1);
 					return stato;
-				} else {
-					pizza.isStatoOrdine();
-					stato.isStatoOrdine();
+				} else if (pizza.getFaseCasualeOrdine() == 2) {
+					pizza.getFaseCasualeOrdine();
+					stato.getFaseCasualeOrdine();
 					stato.setCodiceOrdine(pizza.getCodiceOrdine());
 					stato.setNomePizza(pizza.getNomePizza());
 					stato.setNomeCliente(pizza.getNomeCliente());
-					stato.setMessageOrdine(LibroConstants.MODIFICA_OK6);
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA2);
+					return stato;
+				} else if (pizza.getFaseCasualeOrdine() == 3) {
+					pizza.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
+					stato.setFaseCasualeOrdine(FaseCasualeOrdine.getFaseCasualeOrdine());
+					stato.setCodiceOrdine(pizza.getCodiceOrdine());
+					stato.setNomePizza(pizza.getNomePizza());
+					stato.setNomeCliente(pizza.getNomeCliente());
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA3);
 					return stato;
 				}
 			}
@@ -57,18 +68,37 @@ public class PizzaController {
 	}
 
 	@PutMapping("/statoOrdine/{codiceOrdine}")
-//	MODIFICA LO STATO DELL'ORDINE
-	public StatoOrdine verificaBoolean(@PathVariable Integer codiceOrdine, @RequestBody Pizza statoOrdine) {
+// STATO DELL'ORDINE
+	public StatoOrdine verificaBoolean(@PathVariable Integer codiceOrdine) {
 		StatoOrdine stato = new StatoOrdine();
 		for (Pizza pizza : pizze) {
+			pizza.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+			stato.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
 			if (pizza.getCodiceOrdine() == codiceOrdine) {
-				if (pizza.isStatoOrdine() == false) {
-					pizza.setStatoOrdine(statoOrdine.isStatoOrdine());
-					stato.setStatoOrdine(statoOrdine.isStatoOrdine());
+				if (pizza.getFaseCasualeOrdine() == 1) {
+					pizza.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+					stato.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
 					stato.setCodiceOrdine(pizza.getCodiceOrdine());
 					stato.setNomePizza(pizza.getNomePizza());
 					stato.setNomeCliente(pizza.getNomeCliente());
-					stato.setMessageOrdine(LibroConstants.MODIFICA_OK6);
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA1);
+					return stato;
+				}
+				else if (pizza.getFaseCasualeOrdine() == 2) {
+					pizza.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+					stato.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+					stato.setCodiceOrdine(pizza.getCodiceOrdine());
+					stato.setNomePizza(pizza.getNomePizza());
+					stato.setNomeCliente(pizza.getNomeCliente());
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA2);
+					return stato;
+				} else if (pizza.getFaseCasualeOrdine() == 3) {
+					pizza.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+					stato.setFaseCasualeOrdine(pizza.getFaseCasualeOrdine());
+					stato.setCodiceOrdine(pizza.getCodiceOrdine());
+					stato.setNomePizza(pizza.getNomePizza());
+					stato.setNomeCliente(pizza.getNomeCliente());
+					stato.setMessageOrdine(LibroConstants.MODIFICA_PIZZA3);
 					return stato;
 				}
 			}
@@ -92,14 +122,22 @@ public class PizzaController {
 			if (pizza.getCodiceOrdine() == codiceOrdine) {
 				eliminaOrdine = pizza;
 				break;
-			}
+				}
 		}
 		if (eliminaOrdine != null) {
-			pizze.remove(eliminaOrdine);
-			return "Ordine già effettuato,passare al successivo";
-		} else {
-			pizze.remove(eliminaOrdine);
-			return "Ordine da effettuare";
+			if(eliminaOrdine.getFaseCasualeOrdine()==1) {
+				eliminaOrdine.setFaseCasualeOrdine(eliminaOrdine.getFaseCasualeOrdine()+1);
+			return "Lo stato del tuo ordine è passato da in attesa a in preparazione";
 		}
+		 else if(eliminaOrdine.getFaseCasualeOrdine()==2){
+			eliminaOrdine.setFaseCasualeOrdine(eliminaOrdine.getFaseCasualeOrdine()+1);
+			return "Lo stato del tuo ordine è passato da in preparazione a essere pronto per essere consegnato";
+		}
+			else if (eliminaOrdine.getFaseCasualeOrdine()==3){
+				pizze.remove(eliminaOrdine);
+				return "L'Ordine è stato appena consegnato";
+			}
+		}
+		return "";
 	}
 }
