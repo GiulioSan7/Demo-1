@@ -11,6 +11,8 @@ public class LibroConstants {
 	public static final String MODIFICA_PIZZA1 ="Il tuo ordine è ancora in attesa";
 	public static final String MODIFICA_PIZZA2 ="Il tuo ordine è in fase di preparazione";
 	public static final String MODIFICA_PIZZA3 ="Il tuo ordine è pronto. RITIRA LE PIZZE!!!";
+	public static final String MODIFICA_PRODOTTO ="I PRODOTTI SONO STATI VENDUTI";
+	public static final String MODIFICA_PRODOTTO2 ="LA QUANTITA DI PRODOTTI DA VENDERE E' STATA AGGIORNATA";
 
 
 }
